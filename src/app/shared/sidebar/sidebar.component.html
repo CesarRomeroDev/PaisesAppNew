@@ -1,0 +1,11 @@
+<h2>Busquedas</h2>
+<hr>
+<ul class="list-group">
+    <!--routerLink es una propiedad de routerModule, que nos ayuda a navegar por las rutas-->
+    <!--routerLinkActive: nos ayuda a mostrar el color en el li seleccionado-->
+    <!--[routerLinkActiveOptions]="{ exact: true }": cuando tenemos el path direccionado a la pagina principal-->
+    <li routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="list-group-item">
+        Buscar Pais</li>
+    <li routerLink="region" routerLinkActive="active" class="list-group-item">Por Region</li>
+    <li routerLink="capital" routerLinkActive="active" class="list-group-item">Por capitla</li>
+</ul>
