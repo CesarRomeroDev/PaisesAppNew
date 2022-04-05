@@ -11,7 +11,7 @@ export class PaisService {
   private apiUrl: string = 'https://restcountries.com/v3.1';
 
   constructor(
-    private http: HttpClient  //llamamos a nuestro HttpClientModule
+    private http: HttpClient  //llamamos a nuestro HttpClientModule, los constructores los usamos para llamar a los servicios de angular o algun modulo
   ) { }
 
   /**

@@ -26,14 +26,14 @@ const routes: Routes = [
         component: VerPaisComponent
     },
     {
-        path: '**',                         //si algun usuario ingresa otra ruta.
+        path: '**',                         //culquier otro path que no sea el de arriba
         redirectTo: ''                      //lo redirecciona a home.
     }
 ]
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes)      //forRoot indica que son rutas principales
     ],
     exports: [
         RouterModule

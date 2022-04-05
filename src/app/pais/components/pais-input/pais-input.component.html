@@ -1,0 +1,6 @@
+<!--ngSubmit: Emisor de eventos para el evento "ngSubmit"-->
+<form (ngSubmit)="buscar()" autocomplate="off">
+    <!--ngModel: instancia a partir de un modelo de dominio y la vincula a un elemento de control de formulario.-->
+    <input class="form-control" type="text" name="termino" placeholder="Buscar País...." [(ngModel)]="termino"
+        (input)="teclaPresionada()">
+</form>
