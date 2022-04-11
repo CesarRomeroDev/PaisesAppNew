@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Country } from '../interfaces/pais.interface';
 
 @Injectable({
@@ -9,6 +10,10 @@ import { Country } from '../interfaces/pais.interface';
 export class PaisService {
 
   private apiUrl: string = 'https://restcountries.com/v3.1';
+
+  get getHttpParams() {
+    return new HttpParams().set('fields', 'name,capital,cca2,flags,population');
+  }
 
   constructor(
     private http: HttpClient  //llamamos a nuestro HttpClientModule, los constructores los usamos para llamar a los servicios de angular o algun modulo
@@ -23,7 +28,29 @@ export class PaisService {
   buscarPais(termino: string): Observable<Country[]> {  //es de tipo Observable
     const url = `${this.apiUrl}/name/${termino}`;
 
-    return this.http.get<Country[]>(url); //get es de tipo Observable
+    return this.http.get<Country[]>(url, { params: this.getHttpParams }); //get es de tipo Observable
+  }
+  /**
+   * POR CAPITAL
+   */
+  buscarCapital(termino: string): Observable<Country[]> {
+    const url = `${this.apiUrl}/capital/${termino}`;
+
+    return this.http.get<Country[]>(url, { params: this.getHttpParams });
+  }
+  /**
+  * VER PAÍS
+  */
+  getPaisPorId(id: string): Observable<Country[]> {  //quitamos corchetes, solo recibe un solo pais
+    const url = `${this.apiUrl}/alpha/${id}`;
+
+    return this.http.get<Country[]>(url);
+  }
+
+  buscarRegion(region: string): Observable<Country[]> {  //quitamos corchetes, solo recibe un solo pais
+    const url = `${this.apiUrl}/region/${region}`;
+
+    return this.http.get<Country[]>(url, { params: this.getHttpParams }).pipe(tap(console.log))
   }
 
 

@@ -1,1 +1,28 @@
-<p>por-capital works!</p>
+<div class="animate__animated animate__fadeIn">
+    <h2>Por Capital</h2>
+    <hr>
+
+    <div class="row">
+        <div class="col">
+            <!--aqui se emite el "emit" que viene de pais-input.component.ts
+        se va escuchar el evento (onEnter) por eso se pone entre parentesis
+        se pone el nombre de buscar que viene de pais-input.component.ts
+        y por ultimo de pone el tipado en buscar por-pais-component-->
+            <!--onDebounce priviene de pais-input.component.ts-->
+            <!--[] se manda el valor de una variable
+            y sin corchete vamos a mandar un string a visualizar en la web-->
+            <app-pais-input (onEnter)="buscar( $event )" placeholder="Buscar Capital..."></app-pais-input>
+        </div>
+    </div>
+    <hr>
+</div>
+<div *ngIf="hayError" class="alert alert-danger">
+    No se encontró nada con el término {{ termino }}
+</div>
+<!--si la consulta es = 0 no mostrar tabla. si es mayor a 1 muestra tabla.-->
+<div *ngIf="capital.length > 0" class="row">
+    <div class="col">
+        <!--proviene de la carpeta components-->
+        <app-pais-tabla [paises]="capital"></app-pais-tabla>
+    </div>
+</div>
